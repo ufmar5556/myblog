@@ -1,0 +1,24 @@
+{% extends 'firstapp/base.html' %}
+
+{% block title %}Create New Post - Ayra's Blog{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mb-4">Create a New Post</h2>
+    <form method="post" class="mb-4">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.title.label_tag }}
+            {{ form.title }}
+        </div>
+        <div class="mb-3">
+            {{ form.content.label_tag }}
+            {{ form.content }}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    
+    
+    <a href="{% url 'post_list' %}" class="btn btn-secondary">Back to Blog</a>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'firstapp/base.html' %}
+
+{% block title %}Blog Posts{% endblock %}
+
+{% block content %}
+    <h2>Blog Posts</h2>
+    {% for post in posts %}
+        <div>
+            <h3><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h3>
+            <p>{{ post.content|truncatewords:20 }}</p>
+            <small>Published on {{ post.date_published }}</small>
+        </div>
+        <hr>
+    {% empty %}
+        <p>No posts available.</p>
+    {% endfor %}
+{% endblock %}
